@@ -5,7 +5,8 @@ import Layout from "./layouts/Layout";
 import About from "./pages/About";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
-import Vans, { loader as vanLoader } from "./pages/Vans/Vans";
+import VanDetails, { loader as vanLoader } from "./pages/Vans/VanDetails";
+import Vans, { loader as vansLoader } from "./pages/Vans/Vans";
 
 import "./server";
 
@@ -26,6 +27,11 @@ const router = createBrowserRouter([
       {
         path: "/vans",
         element: <Vans />,
+        loader: vansLoader,
+      },
+      {
+        path: "/vans/:vanId",
+        element: <VanDetails />,
         loader: vanLoader,
       },
     ],

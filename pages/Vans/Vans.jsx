@@ -8,7 +8,6 @@ export async function loader() {
 
 export default function Vans() {
   const { vans } = useLoaderData();
-  console.log(vans);
   return (
     <div className="van-list-container">
       <h1>Explore our van options</h1>
