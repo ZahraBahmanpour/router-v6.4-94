@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./layouts/Layout";
 import About from "./pages/About";
 import Home from "./pages/Home";
+import Login, { action as loginAction } from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import VanDetails, { loader as vanLoader } from "./pages/Vans/VanDetails";
 import Vans, { loader as vansLoader } from "./pages/Vans/Vans";
@@ -36,6 +37,7 @@ const router = createBrowserRouter([
       },
     ],
   },
+  { path: "/login", element: <Login />, action: loginAction },
 ]);
 function App() {
   return <RouterProvider router={router} />;

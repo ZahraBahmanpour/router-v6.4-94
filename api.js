@@ -6,7 +6,6 @@ export async function getVans(vanId, searchParams) {
     : `/api/vans`;
   const res = await fetch(url);
   if (!res.ok) {
-    console.log(res);
     throw {
       message: "Failed to fetch vans",
       statusText: res.statusText,
@@ -15,4 +14,22 @@ export async function getVans(vanId, searchParams) {
   }
   const data = await res.json();
   return data.vans;
+}
+
+export async function loginUser(creds) {
+  const res = await fetch("/api/login", {
+    method: "post",
+    body: JSON.stringify(creds),
+  });
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw {
+      message: data.message,
+      statusText: res.statusText,
+      status: res.status,
+    };
+  }
+
+  return data;
 }

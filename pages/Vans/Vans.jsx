@@ -1,7 +1,9 @@
 import { Link, useLoaderData, useSearchParams } from "react-router-dom";
 import { getVans } from "../../api";
+import { requireAuth } from "../../utils";
 
 export async function loader({ request }) {
+  await requireAuth();
   const url = new URL(request.url);
   const vans = await getVans(undefined, url.searchParams.get("type"));
   return { vans };
