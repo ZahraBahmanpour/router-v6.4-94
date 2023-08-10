@@ -88,7 +88,12 @@ createServer({
 
     this.get("/vans", (schema, request) => {
       // return new Response(400, {}, {error: "Error fetching data"})
-      return schema.vans.all();
+      if (request.queryParams.type) {
+        const type = request.queryParams.type;
+        return schema.vans.where({ type });
+      } else {
+        return schema.vans.all();
+      }
     });
 
     this.get("/vans/:id", (schema, request) => {

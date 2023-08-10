@@ -1,7 +1,12 @@
-export async function getVans(vanId) {
-  const url = vanId ? `/api/vans/${vanId}` : `/api/vans`;
+export async function getVans(vanId, searchParams) {
+  const url = vanId
+    ? `/api/vans/${vanId}`
+    : searchParams
+    ? `/api/vans?type=${searchParams}`
+    : `/api/vans`;
   const res = await fetch(url);
   if (!res.ok) {
+    console.log(res);
     throw {
       message: "Failed to fetch vans",
       statusText: res.statusText,
